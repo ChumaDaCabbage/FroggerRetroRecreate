@@ -50,6 +50,7 @@ public class FrogDie : MonoBehaviour
             transform.position = startPos;
             sr.sprite = defualtSprite;
             fm.enabled = true;
+            fm.highestPos = transform.position.y;
         }
         else
         {

@@ -7,16 +7,22 @@ public class FrogMove : MonoBehaviour
     public Sprite turnedFrog;
     Sprite defualtFrog;
 
+    [HideInInspector]
+    public float highestPos;
+
     SpriteRenderer sr;
     FrogDie fd;
+    WinFrog wf;
 
     // Start is called before the first frame update
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         fd = gameObject.GetComponent<FrogDie>();
+        wf = gameObject.GetComponent<WinFrog>();
 
         defualtFrog = sr.sprite;
+        highestPos = transform.position.y;
     }
 
     // Update is called once per frame
@@ -29,9 +35,19 @@ public class FrogMove : MonoBehaviour
             if (hit == false)
             {
                 transform.position += new Vector3(0, 0.6625512f, 0);
+
+                if (transform.position.y > highestPos)
+                {
+                    ScoreKeeper.addScore(1);
+                    highestPos = transform.position.y;
+                }
             }
 
-            if (hit != false && hit.transform.tag == "Death")
+            if (hit != false && hit.transform.tag == "Win")
+            {
+                wf.frogWin();
+            }
+            else if (hit != false && hit.transform.tag == "Death")
             {
                 fd.startDeath();
             }
