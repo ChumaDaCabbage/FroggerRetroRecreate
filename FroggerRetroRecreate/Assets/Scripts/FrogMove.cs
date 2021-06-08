@@ -32,7 +32,7 @@ public class FrogMove : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f);
             Debug.DrawRay(transform.position, transform.up, Color.white, 10);
-            if (hit == false)
+            if (hit == false || hit.transform.tag == "Death")
             {
                 transform.position += new Vector3(0, 0.6625512f, 0);
 
@@ -47,7 +47,7 @@ public class FrogMove : MonoBehaviour
             {
                 wf.frogWin();
             }
-            else if (hit != false && hit.transform.tag == "Death")
+            else if (hit != false && hit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }
@@ -61,12 +61,12 @@ public class FrogMove : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f);
             Debug.DrawRay(transform.position, -transform.up, Color.white, 10);
-            if (hit == false)
+            if (hit == false || hit.transform.tag == "Death")
             {
                 transform.position += new Vector3(0, -0.6625512f, 0);
             }
 
-            if (hit != false && hit.transform.tag == "Death")
+            if (hit != false && hit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }
@@ -80,12 +80,12 @@ public class FrogMove : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right, 0.88888888888f);
             Debug.DrawRay(transform.position, -transform.right, Color.white, 10);
-            if (hit == false)
+            if (hit == false || hit.transform.tag == "Death")
             {
                 transform.position += new Vector3(-0.88888888888f, 0, 0);
             }
 
-            if (hit != false && hit.transform.tag == "Death")
+            if (hit != false && hit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }
@@ -99,12 +99,12 @@ public class FrogMove : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 0.88888888888f);
             Debug.DrawRay(transform.position, transform.right, Color.white, 10);
-            if (hit == false)
+            if (hit == false || hit.transform.tag == "Death")
             {
                 transform.position += new Vector3(0.88888888888f, 0, 0);
             }
 
-            if (hit != false && hit.transform.tag == "Death")
+            if (hit != false && hit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }

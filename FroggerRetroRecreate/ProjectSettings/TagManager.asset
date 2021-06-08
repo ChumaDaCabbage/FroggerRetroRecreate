@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Death
   - Win
+  - DeathWall
   layers:
   - Default
   - TransparentFX
