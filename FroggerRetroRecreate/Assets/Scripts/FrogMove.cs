@@ -94,6 +94,10 @@ public class FrogMove : MonoBehaviour
             Debug.DrawRay(transform.position, -transform.right, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
             {
+                if (FrogWaterFollow.wm != null && transform.position.x - 0.88888888888f < -FrogWaterFollow.wm.offscreenOffset)
+                {
+                    transform.position = new Vector3(FrogWaterFollow.wm.offscreenOffset, transform.position.y, transform.position.z);
+                }
                 transform.position += new Vector3(-0.88888888888f, 0, 0);
             }
 
@@ -117,6 +121,10 @@ public class FrogMove : MonoBehaviour
             Debug.DrawRay(transform.position, transform.right, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
             {
+                if (FrogWaterFollow.wm != null && transform.position.x + 0.88888888888f > FrogWaterFollow.wm.offscreenOffset)
+                {
+                    transform.position = new Vector3(-FrogWaterFollow.wm.offscreenOffset, transform.position.y, transform.position.z);
+                }
                 transform.position += new Vector3(0.88888888888f, 0, 0);
             }
 
