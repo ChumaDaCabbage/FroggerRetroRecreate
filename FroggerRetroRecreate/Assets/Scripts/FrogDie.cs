@@ -65,7 +65,7 @@ public class FrogDie : MonoBehaviour
                 if (hit == false && hit2 == false)
                 {
                     stopped = true;
-                    startDeath();
+                    //startDeath();
                 }
             }
         }

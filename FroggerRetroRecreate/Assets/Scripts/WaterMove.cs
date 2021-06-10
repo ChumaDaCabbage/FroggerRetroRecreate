@@ -42,8 +42,7 @@ public class WaterMove : MonoBehaviour
                         Destroy(catcher, 0.1f);
 
                         float difference = frog.transform.position.x - transform.position.x;
-                        Debug.Log(difference);
-                        frog.transform.position = new Vector3(offscreenOffset + (difference), transform.position.y, transform.position.z);
+                        frog.transform.position = new Vector3(offscreenOffset + difference, transform.position.y, transform.position.z);
                     }
                     transform.position = new Vector3(offscreenOffset, transform.position.y, transform.position.z);
                 }
@@ -63,7 +62,9 @@ public class WaterMove : MonoBehaviour
                     {
                         catcher = Instantiate(frogCatch, new Vector3(-offscreenOffset, transform.position.y, transform.position.z), Quaternion.identity);
                         Destroy(catcher, 0.1f);
-                        frog.transform.position = new Vector3(-offscreenOffset, transform.position.y, transform.position.z);
+
+                        float difference = frog.transform.position.x - transform.position.x;
+                        frog.transform.position = new Vector3(-offscreenOffset + difference, transform.position.y, transform.position.z);
                     }
                     transform.position = new Vector3(-offscreenOffset, transform.position.y, transform.position.z);
                 }

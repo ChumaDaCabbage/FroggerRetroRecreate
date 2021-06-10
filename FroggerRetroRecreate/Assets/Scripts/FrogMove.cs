@@ -7,6 +7,8 @@ public class FrogMove : MonoBehaviour
     public Sprite turnedFrog;
     Sprite defualtFrog;
 
+    public LayerMask layerMask;
+
     [HideInInspector]
     public float highestPos;
 
@@ -35,6 +37,7 @@ public class FrogMove : MonoBehaviour
                 FrogWaterFollow.wm.mounted = false;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f);
+            RaycastHit2D wallHit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f, layerMask);
             Debug.DrawRay(transform.position, transform.up, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
             {
@@ -51,7 +54,7 @@ public class FrogMove : MonoBehaviour
             {
                 wf.frogWin();
             }
-            else if (hit != false && hit.transform.tag == "DeathWall")
+            else if (hit != false && wallHit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }
@@ -68,13 +71,14 @@ public class FrogMove : MonoBehaviour
                 FrogWaterFollow.wm.mounted = false;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f);
+            RaycastHit2D wallHit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f, layerMask);
             Debug.DrawRay(transform.position, -transform.up, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
             {
                 transform.position += new Vector3(0, -0.6625512f, 0);
             }
 
-            if (hit != false && hit.transform.tag == "DeathWall")
+            if (hit != false && wallHit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }
