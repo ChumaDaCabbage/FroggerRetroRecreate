@@ -13,6 +13,8 @@ public class FrogDie : MonoBehaviour
     int lives = 5;
     bool stopped = false;
 
+    public static bool dead = false;
+
     Vector3 startPos;
 
     SpriteRenderer sr;
@@ -29,12 +31,38 @@ public class FrogDie : MonoBehaviour
 
     private void Update()
     {
-        if (!stopped)
+        if (transform.position.y < 1.207858f)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 0.01f);
-            if (hit != false)
+            if (!stopped)
             {
-                if (hit.transform.tag == "Death")
+                RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3304425f, transform.position.y), Vector2.up, 0.01f);
+                RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(transform.position.x - 0.3304425f, transform.position.y), Vector2.up, 0.01f);
+                if (hit != false)
+                {
+                    if (hit.transform.tag == "Death")
+                    {
+                        stopped = true;
+                        startDeath();
+                    }
+                }
+                else if (hit2 != false)
+                {
+                    if (hit2.transform.tag == "Death")
+                    {
+                        stopped = true;
+                        startDeath();
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (!stopped)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3304425f, transform.position.y), Vector2.up, 0.01f);
+                RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(transform.position.x - 0.3304425f, transform.position.y), Vector2.up, 0.01f);
+
+                if (hit == false && hit2 == false)
                 {
                     stopped = true;
                     startDeath();
@@ -45,6 +73,8 @@ public class FrogDie : MonoBehaviour
 
     public void startDeath()
     {
+        dead = true;
+
         lives--;
         if (lives != 0)
         {
@@ -64,6 +94,7 @@ public class FrogDie : MonoBehaviour
 
         if (lives > 0)
         {
+            dead = false;
             transform.position = startPos;
             sr.sprite = defualtSprite;
             fm.enabled = true;

@@ -28,8 +28,12 @@ public class FrogMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            FrogWaterFollow.sameMount = false;
+            if (FrogWaterFollow.wm != null)
+                FrogWaterFollow.wm.mounted = false;
+
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f);
             Debug.DrawRay(transform.position, transform.up, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
@@ -57,8 +61,12 @@ public class FrogMove : MonoBehaviour
                 sr.flipY = false;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            FrogWaterFollow.sameMount = false;
+            if(FrogWaterFollow.wm != null)
+                FrogWaterFollow.wm.mounted = false;
+
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f);
             Debug.DrawRay(transform.position, -transform.up, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
@@ -76,8 +84,12 @@ public class FrogMove : MonoBehaviour
                 sr.flipY = true;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            FrogWaterFollow.sameMount = false;
+            if (FrogWaterFollow.wm != null)
+                FrogWaterFollow.wm.mounted = false;
+
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right, 0.88888888888f);
             Debug.DrawRay(transform.position, -transform.right, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
@@ -95,8 +107,12 @@ public class FrogMove : MonoBehaviour
                 sr.flipX = true;
             }
         }
-        else if(Input.GetKeyDown(KeyCode.D))
+        else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
+            FrogWaterFollow.sameMount = false;
+            if (FrogWaterFollow.wm != null)
+                FrogWaterFollow.wm.mounted = false;
+
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 0.88888888888f);
             Debug.DrawRay(transform.position, transform.right, Color.white, 10);
             if (hit == false || hit.transform.tag == "Death")
