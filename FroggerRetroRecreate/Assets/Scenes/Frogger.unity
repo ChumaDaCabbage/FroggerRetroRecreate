@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 17951493}
   - component: {fileID: 17951494}
   m_Layer: 0
-  m_Name: WeirdLine (9)
+  m_Name: WeirdLine (9) WIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,7 +517,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008695841, y: -0.008938253}
+  m_Offset: {x: 0.40968657, y: -0.008938253}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.48159647, y: 0.515}
@@ -528,7 +528,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3570838, y: 0.5751679}
+  m_Size: {x: 1.5551023, y: 0.5751679}
   m_EdgeRadius: 0
 --- !u!114 &60417610
 MonoBehaviour:
@@ -890,7 +890,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.065689996, z: 1}
   m_Children: []
   m_Father: {fileID: 1349206386}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &170392517
 SpriteRenderer:
@@ -1815,7 +1815,7 @@ GameObject:
   - component: {fileID: 645802030}
   - component: {fileID: 645802031}
   m_Layer: 0
-  m_Name: WeirdLine (11)
+  m_Name: WeirdLine (11) WIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2704,7 +2704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.065689996, z: 1}
   m_Children: []
   m_Father: {fileID: 1349206386}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &817973835
 SpriteRenderer:
@@ -2891,7 +2891,7 @@ GameObject:
   - component: {fileID: 836353099}
   - component: {fileID: 836353100}
   m_Layer: 0
-  m_Name: WeirdLine (10)
+  m_Name: WeirdLine (10) WIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4235,8 +4235,8 @@ Transform:
   - {fileID: 605767456}
   - {fileID: 816715610}
   - {fileID: 1997024283}
-  - {fileID: 817973834}
   - {fileID: 170392516}
+  - {fileID: 817973834}
   - {fileID: 1921194955}
   - {fileID: 17951493}
   - {fileID: 836353099}
@@ -4257,7 +4257,7 @@ GameObject:
   - component: {fileID: 1352684234}
   - component: {fileID: 1352684235}
   m_Layer: 0
-  m_Name: WeirdLine (12)
+  m_Name: WeirdLine (12) WIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5966,7 +5966,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.39174342, y: 0.006592408}
+  m_Offset: {x: 0.006013632, y: 0.006592393}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.48159647, y: 0.515}
@@ -5977,7 +5977,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5562053, y: 0.5855212}
+  m_Size: {x: 0.76069117, y: 0.5855212}
   m_EdgeRadius: 0
 --- !u!114 &2010025379
 MonoBehaviour:

@@ -21,7 +21,6 @@ public class FrogWaterFollow : MonoBehaviour
     {
         if (transform.position.y > 1f)
         {
-            Debug.Log("hi");
             if (!sameMount)
             {
                 RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3304425f, transform.position.y), Vector2.up, 0.01f);
