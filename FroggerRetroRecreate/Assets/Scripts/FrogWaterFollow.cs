@@ -12,14 +12,14 @@ public class FrogWaterFollow : MonoBehaviour
 
 
     Coroutine coroutine;
-    bool CR_running = false;
+    public static bool CR_running = false;
 
     public static WaterMove wm = null;
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > 1f)
+        if (transform.position.y > 1f && transform.position.y <= 4)
         {
             if (!sameMount)
             {
@@ -69,18 +69,32 @@ public class FrogWaterFollow : MonoBehaviour
             {
                 transform.position += new Vector3(-0.08349f, 0, 0);
 
-                for (int i = 0; i < speed; i++)
+                if (speed < 2)
                 {
-                    yield return new WaitForFixedUpdate();
+                    yield return new WaitForSeconds((speed + 0.5f) / 60);
+                }
+                else
+                {
+                    for (int i = 0; i < speed; i++)
+                    {
+                        yield return new WaitForFixedUpdate();
+                    }
                 }
             }   
             else if (!left)
             {
                 transform.position += new Vector3(0.08349f, 0, 0);
 
-                for (int i = 0; i < speed; i++)
+                if (speed < 2)
                 {
-                    yield return new WaitForFixedUpdate();
+                    yield return new WaitForSeconds((speed + 0.5f)/60);
+                }
+                else
+                {
+                    for (int i = 0; i < speed; i++)
+                    {
+                        yield return new WaitForFixedUpdate();
+                    }
                 }
             }
         }

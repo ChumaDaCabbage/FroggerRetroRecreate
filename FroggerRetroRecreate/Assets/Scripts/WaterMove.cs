@@ -47,9 +47,16 @@ public class WaterMove : MonoBehaviour
                     transform.position = new Vector3(offscreenOffset, transform.position.y, transform.position.z);
                 }
 
-                for (int i = 0; i < speed; i++)
+                if (speed < 2)
                 {
-                    yield return new WaitForFixedUpdate();
+                    yield return new WaitForSeconds((speed + 0.5f) / 60);
+                }
+                else
+                {
+                    for (int i = 0; i < speed; i++)
+                    {
+                        yield return new WaitForFixedUpdate();
+                    }
                 }
             }
             else if (!left)
@@ -69,9 +76,16 @@ public class WaterMove : MonoBehaviour
                     transform.position = new Vector3(-offscreenOffset, transform.position.y, transform.position.z);
                 }
 
-                for (int i = 0; i < speed; i++)
+                if (speed < 2)
                 {
-                    yield return new WaitForFixedUpdate();
+                    yield return new WaitForSeconds((speed + 0.5f) / 60);
+                }
+                else
+                {
+                    for (int i = 0; i < speed; i++)
+                    {
+                        yield return new WaitForFixedUpdate();
+                    }
                 }
             }
         }

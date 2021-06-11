@@ -39,7 +39,7 @@ public class FrogMove : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f);
             RaycastHit2D wallHit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f, layerMask);
             Debug.DrawRay(transform.position, transform.up, Color.white, 10);
-            if (hit == false || hit.transform.tag == "Death")
+            if ((hit == false || hit.transform.tag == "Death") && wallHit == false)
             {
                 transform.position += new Vector3(0, 0.6625512f, 0);
 
@@ -50,11 +50,11 @@ public class FrogMove : MonoBehaviour
                 }
             }
 
-            if (hit != false && hit.transform.tag == "Win")
+            if (wallHit != false && wallHit.transform.tag == "Win")
             {
                 wf.frogWin();
             }
-            else if (hit != false && wallHit.transform.tag == "DeathWall")
+            else if (hit != false && wallHit != false && wallHit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }
@@ -73,12 +73,12 @@ public class FrogMove : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f);
             RaycastHit2D wallHit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f, layerMask);
             Debug.DrawRay(transform.position, -transform.up, Color.white, 10);
-            if (hit == false || hit.transform.tag == "Death")
+            if ((hit == false || hit.transform.tag == "Death") && wallHit == false)
             {
                 transform.position += new Vector3(0, -0.6625512f, 0);
             }
 
-            if (hit != false && wallHit.transform.tag == "DeathWall")
+            if (hit != false && wallHit != false && wallHit.transform.tag == "DeathWall")
             {
                 fd.startDeath();
             }
@@ -102,7 +102,22 @@ public class FrogMove : MonoBehaviour
                 {
                     transform.position = new Vector3(FrogWaterFollow.wm.offscreenOffset, transform.position.y, transform.position.z);
                 }
-                transform.position += new Vector3(-0.88888888888f, 0, 0);
+
+                if (FrogWaterFollow.CR_running && FrogWaterFollow.wm != null)
+                {
+                    if (FrogWaterFollow.wm.left)
+                    {
+                        transform.position += new Vector3(-0.88888888888f + 0.08349f, 0, 0);
+                    }
+                    else
+                    {
+                        transform.position += new Vector3(-0.88888888888f - 0.08349f, 0, 0);
+                    }
+                }
+                else
+                {
+                    transform.position += new Vector3(-0.88888888888f, 0, 0);
+                }
             }
 
             if (hit != false && hit.transform.tag == "DeathWall")
@@ -129,7 +144,22 @@ public class FrogMove : MonoBehaviour
                 {
                     transform.position = new Vector3(-FrogWaterFollow.wm.offscreenOffset, transform.position.y, transform.position.z);
                 }
-                transform.position += new Vector3(0.88888888888f, 0, 0);
+
+                if (FrogWaterFollow.CR_running && FrogWaterFollow.wm != null)
+                {
+                    if (!FrogWaterFollow.wm.left)
+                    {
+                        transform.position += new Vector3(0.88888888888f - 0.08349f, 0, 0);
+                    }
+                    else
+                    {
+                        transform.position += new Vector3(0.88888888888f + 0.08349f, 0, 0);
+                    }
+                }
+                else
+                {
+                    transform.position += new Vector3(0.88888888888f, 0, 0);
+                }
             }
 
             if (hit != false && hit.transform.tag == "DeathWall")
