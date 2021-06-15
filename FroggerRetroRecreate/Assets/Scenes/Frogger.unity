@@ -2396,6 +2396,7 @@ MonoBehaviour:
   - {fileID: 1253407212}
   - {fileID: 1876940951}
   - {fileID: 1320848135}
+  s: {fileID: 609543602}
   wfSR:
   - {fileID: 1213278903}
   - {fileID: 435050493}
@@ -2595,6 +2596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76dd433d187e9a24c8d3789b84a16b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerBar: {fileID: 714154685}
+  fd: {fileID: 564527493}
 --- !u!1 &645802029
 GameObject:
   m_ObjectHideFlags: 0

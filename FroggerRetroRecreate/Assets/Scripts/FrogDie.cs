@@ -9,7 +9,7 @@ public class FrogDie : MonoBehaviour
     public Sprite defualtSprite;
 
     public GameObject[] livesBar = new GameObject[4];
-
+    
     int lives = 5;
     bool stopped = false;
 

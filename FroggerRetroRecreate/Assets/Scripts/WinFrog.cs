@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WinFrog : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class WinFrog : MonoBehaviour
 
     SpriteRenderer sr;
     FrogMove fm;
+    public Slider s;
     public SpriteRenderer[] wfSR = new SpriteRenderer[5];
 
     // Start is called before the first frame update
@@ -116,15 +118,16 @@ public class WinFrog : MonoBehaviour
 
         if (done)
         {
-            ScoreKeeper.addScore(Random.Range(14, 51) + 100);
-
+            ScoreKeeper.addScore(((int)(40f * s.value )) + 110);
+            s.value = 1;
             sr.enabled = false;
             fm.enabled = false;
             StartCoroutine(winAllPause());
         }
         else
         {
-            ScoreKeeper.addScore(Random.Range(14, 51));
+            ScoreKeeper.addScore(((int)(40f * s.value)) + 10);
+            s.value = 1;
             transform.position = startPos;
             sr.flipY = false;
             sr.flipX = false;
