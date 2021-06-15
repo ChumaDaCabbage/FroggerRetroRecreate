@@ -8,9 +8,12 @@ public class FrogMove : MonoBehaviour
     Sprite defualtFrog;
 
     public LayerMask layerMask;
+    public LayerMask frogMask;
 
     [HideInInspector]
     public float highestPos;
+
+    public WhiteFrog whf;
 
     SpriteRenderer sr;
     FrogDie fd;
@@ -38,9 +41,15 @@ public class FrogMove : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f);
             RaycastHit2D wallHit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f, layerMask);
+            RaycastHit2D frogHit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f, frogMask);
             Debug.DrawRay(transform.position, transform.up, Color.white, 10);
-            if ((hit == false || hit.transform.tag == "Death") && wallHit == false)
+            if ((hit == false || hit.transform.tag == "Death" || hit.transform.tag == "WhiteFrog") && wallHit == false)
             {
+                if (frogHit != false && frogHit.transform.tag == "WhiteFrog")
+                {
+                    whf.frogHit();
+                }
+
                 transform.position += new Vector3(0, 0.6625512f, 0);
 
                 if (transform.position.y > highestPos)
@@ -72,9 +81,15 @@ public class FrogMove : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f);
             RaycastHit2D wallHit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f, layerMask);
+            RaycastHit2D frogHit = Physics2D.Raycast(transform.position, -transform.up, 0.6625512f, frogMask);
             Debug.DrawRay(transform.position, -transform.up, Color.white, 10);
-            if ((hit == false || hit.transform.tag == "Death") && wallHit == false)
+            if ((hit == false || hit.transform.tag == "Death" || hit.transform.tag == "WhiteFrog") && wallHit == false)
             {
+                if (frogHit != false && frogHit.transform.tag == "WhiteFrog")
+                {
+                    whf.frogHit();
+                }
+
                 transform.position += new Vector3(0, -0.6625512f, 0);
             }
 
@@ -95,9 +110,15 @@ public class FrogMove : MonoBehaviour
                 FrogWaterFollow.wm.mounted = false;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right, 0.88888888888f);
+            RaycastHit2D frogHit = Physics2D.Raycast(transform.position, -transform.right, 0.88888888888f, frogMask);
             Debug.DrawRay(transform.position, -transform.right, Color.white, 10);
-            if (hit == false || hit.transform.tag == "Death")
+            if (hit == false || hit.transform.tag == "Death" || hit.transform.tag == "WhiteFrog")
             {
+                if (frogHit != false && frogHit.transform.tag == "WhiteFrog")
+                {
+                    whf.frogHit();
+                }
+
                 if (FrogWaterFollow.wm != null && transform.position.x - 0.88888888888f < -FrogWaterFollow.wm.offscreenOffset)
                 {
                     transform.position = new Vector3(FrogWaterFollow.wm.offscreenOffset, transform.position.y, transform.position.z);
@@ -137,9 +158,15 @@ public class FrogMove : MonoBehaviour
                 FrogWaterFollow.wm.mounted = false;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 0.88888888888f);
+            RaycastHit2D frogHit = Physics2D.Raycast(transform.position, transform.right, 0.88888888888f, frogMask);
             Debug.DrawRay(transform.position, transform.right, Color.white, 10);
-            if (hit == false || hit.transform.tag == "Death")
+            if (hit == false || hit.transform.tag == "Death" || hit.transform.tag == "WhiteFrog")
             {
+                if (frogHit != false && frogHit.transform.tag == "WhiteFrog")
+                {
+                    whf.frogHit();
+                }
+
                 if (FrogWaterFollow.wm != null && transform.position.x + 0.88888888888f > FrogWaterFollow.wm.offscreenOffset)
                 {
                     transform.position = new Vector3(-FrogWaterFollow.wm.offscreenOffset, transform.position.y, transform.position.z);

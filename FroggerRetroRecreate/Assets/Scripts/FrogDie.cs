@@ -15,10 +15,14 @@ public class FrogDie : MonoBehaviour
 
     public static bool dead = false;
 
+    public LayerMask LayerMask;
+    public LayerMask frogMask;
+
     Vector3 startPos;
 
     SpriteRenderer sr;
     FrogMove fm;
+    public WhiteFrog whf;
 
     // Start is called before the first frame update
     void Start()
@@ -59,8 +63,16 @@ public class FrogDie : MonoBehaviour
         {
             if (!stopped)
             {
-                RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3304425f, transform.position.y), Vector2.up, 0.01f);
-                RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(transform.position.x - 0.3304425f, transform.position.y), Vector2.up, 0.01f);
+                RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3304425f, transform.position.y), Vector2.up, 0.01f, LayerMask);
+                RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(transform.position.x - 0.3304425f, transform.position.y), Vector2.up, 0.01f, LayerMask);
+              
+                RaycastHit2D frogHit = Physics2D.Raycast(transform.position, transform.up, 0.6625512f, frogMask);
+                RaycastHit2D frogHit2 = Physics2D.Raycast(transform.position, transform.up, 0.6625512f, frogMask);
+                if (frogHit != false || frogHit2 != false)
+                {
+                    whf.frogHit();
+                }
+
 
                 if (hit == false && hit2 == false)
                 {

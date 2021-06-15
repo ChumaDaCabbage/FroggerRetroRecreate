@@ -9,6 +9,10 @@ public class WinFrog : MonoBehaviour
     public Sprite defualtSprite;
 
     public GameObject[] winFrogs = new GameObject[5];
+    public GameObject[] fireFlys = new GameObject[5];
+
+    float timer = 15;
+    bool spawned = false;
 
     SpriteRenderer sr;
     FrogMove fm;
@@ -26,7 +30,56 @@ public class WinFrog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else if (!spawned)
+        {
+            bool[] locations = new bool[winFrogs.Length];
 
+            for (int i = 0; i < winFrogs.Length; i++)
+            {
+                if (winFrogs[i].transform.tag == "Wall")
+                {
+                    locations[i] = false;
+                }
+                else
+                {
+                    locations[i] = true;
+                }
+            }
+
+            int random = Random.Range(0, locations.Length);
+            for (int i = 0; i < locations.Length; i++)
+            {
+                if (i == locations.Length - 1)
+                {
+                    fireFlys[i].SetActive(true);
+                }
+                else if (locations[i])
+                {
+                    if (random == i)
+                    {
+                        fireFlys[i].SetActive(true);
+                        break;
+                    }
+                }
+            }
+
+            spawned = true;
+            timer = 4;
+        }
+        else if (spawned)
+        {
+            for (int i = 0; i < fireFlys.Length; i++)
+            {
+                fireFlys[i].SetActive(false);
+            }
+
+            spawned = false;
+            timer = 15;
+        }
     }
 
     public void frogWin()
@@ -44,6 +97,12 @@ public class WinFrog : MonoBehaviour
 
         wfSR[wantedPos].enabled = true;
         winFrogs[wantedPos].transform.tag = "Wall";
+
+        if (fireFlys[wantedPos].activeInHierarchy)
+        {
+            ScoreKeeper.addScore(50);
+            fireFlys[wantedPos].SetActive(false);
+        }
 
         bool done = true;
         for (int i = 0; i < winFrogs.Length; i++)

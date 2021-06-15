@@ -6,6 +6,8 @@ public class WaterMove : MonoBehaviour
 {
     [HideInInspector]
     public bool mounted = false;
+    [HideInInspector]
+    public bool jumped = false;
 
     GameObject frog;
     public GameObject frogCatch;
@@ -45,6 +47,7 @@ public class WaterMove : MonoBehaviour
                         frog.transform.position = new Vector3(offscreenOffset + difference, transform.position.y, transform.position.z);
                     }
                     transform.position = new Vector3(offscreenOffset, transform.position.y, transform.position.z);
+                    jumped = true;
                 }
 
                 if (speed < 2)
@@ -74,6 +77,7 @@ public class WaterMove : MonoBehaviour
                         frog.transform.position = new Vector3(-offscreenOffset + difference, transform.position.y, transform.position.z);
                     }
                     transform.position = new Vector3(-offscreenOffset, transform.position.y, transform.position.z);
+                    jumped = true;
                 }
 
                 if (speed < 2)
