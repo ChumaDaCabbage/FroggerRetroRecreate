@@ -35,7 +35,7 @@ public class TimerBar : MonoBehaviour
 
     private IEnumerator sliderDown()
     {
-        while (true)
+        while (fd.lives > 0)
         {
             yield return new WaitForSeconds(1);
             s.value -= 0.025f;

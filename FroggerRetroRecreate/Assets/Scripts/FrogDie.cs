@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FrogDie : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class FrogDie : MonoBehaviour
 
     public GameObject[] livesBar = new GameObject[4];
     
-    int lives = 5;
+    [HideInInspector]
+    public int lives = 5;
     bool stopped = false;
 
     public static bool dead = false;
@@ -18,11 +20,14 @@ public class FrogDie : MonoBehaviour
     public LayerMask LayerMask;
     public LayerMask frogMask;
 
+    float position;
+
     Vector3 startPos;
 
     SpriteRenderer sr;
     FrogMove fm;
     public WhiteFrog whf;
+    public Slider s;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +40,11 @@ public class FrogDie : MonoBehaviour
 
     private void Update()
     {
+        if (dead && lives > 0)
+        {
+            s.value = position;
+        }
+
         if (transform.position.y < 1.207858f)
         {
             if (!stopped)
@@ -85,6 +95,8 @@ public class FrogDie : MonoBehaviour
 
     public void startDeath()
     {
+
+        position = s.value;
         dead = true;
 
         lives--;
@@ -107,6 +119,7 @@ public class FrogDie : MonoBehaviour
         if (lives > 0)
         {
             dead = false;
+            s.value = 1;
             transform.position = startPos;
             sr.sprite = defualtSprite;
             fm.enabled = true;
